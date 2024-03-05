@@ -86,7 +86,7 @@ const CreateDevotion = () => {
       try {
         setCreating(true);
         const data = { topic, text, audioName, imageName, date };
-        const response = await axios.post('http://localhost:5000/graphql-server', {
+        const response = await axios.post('https://dailygracedevotional.vercel.app/graphql-server', {
           query: print(CREATE_POST_MUTATION),
           variables: {
             postInput: data,

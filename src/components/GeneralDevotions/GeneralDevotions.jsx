@@ -13,7 +13,7 @@ const GeneralDevotion = () => {
   const getAllPosts = async () => {
     try {
       const response = await axios.post(
-        'http://localhost:5000/graphql-server',
+        'https://dailygracedevotional.vercel.app/graphql-server',
         {
           query: `
             query GetAllPosts {

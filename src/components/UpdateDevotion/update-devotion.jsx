@@ -43,7 +43,7 @@ const UpdateDevotion = () => {
 
   const getPostData = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/graphql-server', {
+      const response = await axios.post('https://dailygracedevotional.vercel.app/graphql-server', {
         query: `
           query GetPost($postId: ID!) {
             post(id: $postId) {

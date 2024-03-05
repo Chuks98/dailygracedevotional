@@ -31,7 +31,7 @@ const UpdateList = () => {
 
   const getAllPosts = async (currentOffset = 0, limit = 20) => {
     try {
-      const response = await axios.post('http://localhost:5000/graphql-server', {
+      const response = await axios.post('https://dailygracedevotional.vercel.app/graphql-server', {
         query: `
           query GetAllPosts($offset: Int, $limit: Int) {
             posts(offset: $offset, limit: $limit) {

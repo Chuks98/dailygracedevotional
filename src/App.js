@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/header";
 import './index.css';
 import Home from "./components/home";
-import About from "./components/about/about";
 import Login from "./components/AdminLogin/AdminLogin";
 import CreateDevotion from "./components/CreateDevotion/CreateDevotion";
 import Display from "./components/display/Display";
@@ -24,9 +23,8 @@ function App() {
         <div className="max-w-6xl mx-auto">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
             <Route path="/admin-login" element={<Login />} />
-            <Route path="/create-devotion" element={<CreateDevotion />} />
+            <Route path="/add-devotion" element={<CreateDevotion />} />
             <Route path="/display/:id" element={<Display />} />
             <Route path="/all-devotions" element={<General />} />
             <Route path="/general-devotion" element={<GeneralDevotion />} />

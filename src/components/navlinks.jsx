@@ -30,7 +30,7 @@ function NavLinks() {
         <Link id="navlink" to="/#todaysDevotion" className={"navlink font-bold text-lg"}>
           Today's Devotion
         </Link>
-        <Link id="navlink" t="/generalDevotion" className={"navlink font-bold text-lg"}>
+        <Link id="navlink" t="/general-devotion" className={"navlink font-bold text-lg"}>
           General Devotion
         </Link>
         <Link id="navlink" to="/#about" className={"navlink font-bold text-lg"}>
@@ -38,10 +38,10 @@ function NavLinks() {
         </Link>
         {isLoggedIn && 
           <>
-            <Link id="navlink" to={`/post`} className={"navlink font-bold text-lg"}>
+            <Link id="navlink" to={`/add-devotion`} className={"navlink font-bold text-lg"}>
               Add Devotion
             </Link>
-            <Link id="navlink" to={`/updateDevotion`} className={"navlink font-bold text-lg"}>
+            <Link id="navlink" to={`/update-list`} className={"navlink font-bold text-lg"}>
               Update Devotion
             </Link>
           </>
