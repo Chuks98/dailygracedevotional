@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import config from "../../config";
 import {useParams} from 'react-router-dom';
 
 
@@ -25,7 +26,7 @@ const SearchByDate = () => {
 
   const getPostData = async () => {
     try {
-      const response = await axios.post('/graphql-server', {
+      const response = await axios.post(`${config.API_URL}/graphql-server`, {
         query: `
           query GetPostByDate($date: String!) {
             getPostByDate(date: $date) {

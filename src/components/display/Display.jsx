@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { format } from 'date-fns';
+import config from "../../config";
+
+
 
 const Display = () => {
   const [postId, setPostId] = useState('');
@@ -22,7 +25,7 @@ const Display = () => {
 
   const getPostData = async () => {
     try {
-      const response = await axios.post('/graphql-server', {
+      const response = await axios.post(`${config.API_URL}/graphql-server`, {
         query: `
           query Post($id: ID!) {
             post(id: $id) {

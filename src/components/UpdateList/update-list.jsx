@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom'; // Assuming you are using React Router for navigation
+import { Link } from 'react-router-dom'; 
+import config from "../../config";
+
 
 
 const UpdateList = () => {
@@ -31,7 +33,7 @@ const UpdateList = () => {
 
   const getAllPosts = async (currentOffset = 0, limit = 20) => {
     try {
-      const response = await axios.post('/graphql-server', {
+      const response = await axios.post(`${config.API_URL}/graphql-server`, {
         query: `
           query GetAllPosts($offset: Int, $limit: Int) {
             posts(offset: $offset, limit: $limit) {

@@ -3,6 +3,8 @@ import axios from 'axios';
 import { print } from 'graphql';
 import { useHistory, useNavigate } from 'react-router-dom'; // Assuming you are using React Router for navigation
 import { ADMIN_LOGIN_QUERY } from '../GraphqlMutations/loginQuery';
+import config from "../../config";
+
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -25,7 +27,7 @@ const Login = () => {
     } else {
       setLoading(true);
       try {
-        const response = await axios.post('/graphql-server', {
+        const response = await axios.post(`${config.API_URL}/graphql-server`, {
           query: print(ADMIN_LOGIN_QUERY),
           variables: {
             username: username,

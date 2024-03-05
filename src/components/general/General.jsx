@@ -4,6 +4,8 @@ import axios from 'axios';
 import { Link } from 'react-router-dom'; // Make sure to use the appropriate Link component for your routing library
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import config from "../../config";
+
 
 const General = () => {
   const [data, setData] = useState([]);
@@ -38,23 +40,20 @@ const General = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.post(
-        '/graphql-server',
-        {
-          query: `
-            query GetAllPosts {
-              posts {
-                id
-                topic
-                text
-                audioName
-                imageName
-                date
-              }
+      const response = await axios.post(`${config.API_URL}/graphql-server`, {
+        query: `
+          query GetAllPosts {
+            posts {
+              id
+              topic
+              text
+              audioName
+              imageName
+              date
             }
-          `,
-        }
-      );
+          }
+        `,
+      });
 
       const fetchedData = response.data.data.posts;
       setData(fetchedData);

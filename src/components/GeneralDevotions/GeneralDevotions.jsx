@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import config from "../../config";
+
 
 const GeneralDevotion = () => {
   const [posts, setPosts] = useState([]);
@@ -13,7 +15,7 @@ const GeneralDevotion = () => {
   const getAllPosts = async () => {
     try {
       const response = await axios.post(
-        '/graphql-server',
+        `${config.API_URL}/graphql-server`,
         {
           query: `
             query GetAllPosts {

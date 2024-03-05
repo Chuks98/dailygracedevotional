@@ -8,6 +8,8 @@ import { format } from 'date-fns';
 import {useParams} from 'react-router-dom';
 import { print } from 'graphql';
 import { UPDATE_POST_MUTATION } from '../GraphqlMutations/updateMutation';
+import config from "../../config";
+
 
 const CustomDateInput = ({ value, onClick, placeholderText }) => (
   <input
@@ -43,7 +45,7 @@ const UpdateDevotion = () => {
 
   const getPostData = async () => {
     try {
-      const response = await axios.post('/graphql-server', {
+      const response = await axios.post(`${config.API_URL}/graphql-server`, {
         query: `
           query GetPost($postId: ID!) {
             post(id: $postId) {
@@ -116,7 +118,7 @@ const UpdateDevotion = () => {
       try {
         setUpdating(true);
         const data = { postId, topic, text, audioName, imageName, date };
-        const response = await axios.post('/graphql-server', {
+        const response = await axios.post(`${config.API_URL}/graphql-server`, {
           query: print(UPDATE_POST_MUTATION),
           variables: {
             postId: id,
@@ -128,7 +130,7 @@ const UpdateDevotion = () => {
           if (audio !== null) {
             const audioRecord = new FormData();
             audioRecord.append('audio', audio);
-            await axios.post('/sendAudio', audioRecord).then((sendAudio) => {
+            await axios.post(`${config.API_URL}/sendAudio`, audioRecord).then((sendAudio) => {
               console.log(sendAudio.data);
             });
           }
@@ -136,7 +138,7 @@ const UpdateDevotion = () => {
           if (thumbnail !== null) {
             const imageThumbnail = new FormData();
             imageThumbnail.append('thumbnail', thumbnail);
-            await axios.post('/sendThumbnail', imageThumbnail).then((sendThumbnail) => {
+            await axios.post(`${config.API_URL}/sendThumbnail`, imageThumbnail).then((sendThumbnail) => {
               console.log(sendThumbnail.data);
             });
           }

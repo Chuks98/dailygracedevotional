@@ -7,6 +7,8 @@ import { CREATE_POST_MUTATION } from '../GraphqlMutations/createMutation';
 import { print } from 'graphql';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import config from "../../config";
+
 
 const CustomDateInput = ({ value, onClick, placeholderText }) => (
   <input
@@ -86,7 +88,7 @@ const CreateDevotion = () => {
       try {
         setCreating(true);
         const data = { topic, text, audioName, imageName, date };
-        const response = await axios.post('/graphql-server', {
+        const response = await axios.post(`${config.API_URL}/graphql-server`, {
           query: print(CREATE_POST_MUTATION),
           variables: {
             postInput: data,
@@ -99,7 +101,7 @@ const CreateDevotion = () => {
           if (audio !== null) {
             const audioRecord = new FormData();
             audioRecord.append('audio', audio);
-            await axios.post('/sendAudio', audioRecord).then((sendAudio) => {
+            await axios.post(`${config.API_URL}/sendAudio`, audioRecord).then((sendAudio) => {
               console.log(sendAudio.data);
             });
           }
@@ -107,7 +109,7 @@ const CreateDevotion = () => {
           if (thumbnail !== null) {
             const imageThumbnail = new FormData();
             imageThumbnail.append('thumbnail', thumbnail);
-            await axios.post('/sendThumbnail', imageThumbnail).then((sendThumbnail) => {
+            await axios.post(`${config.API_URL}/sendThumbnail`, imageThumbnail).then((sendThumbnail) => {
               console.log(sendThumbnail.data);
             });
           }

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { format } from "date-fns";
+import config from "../../config";
+
 
 const TodaysDevotion = () => {
   const [postId, setPostId] = useState("");
@@ -23,7 +25,7 @@ const TodaysDevotion = () => {
 
   const getPostData = async () => {
     try {
-      const response = await axios.post("/graphql-server", {
+      const response = await axios.post(`${API_URL}/graphql-server`, {
         query: `
           query GetPostByDate($date: String!) {
             getPostByDate(date: $date) {

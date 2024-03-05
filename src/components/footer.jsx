@@ -2,6 +2,8 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { Subscribe } from './GraphqlMutations/subscribeMutation';
 import { FaTwitter, FaFacebook, FaInstagram, FaLinkedin, FaEnvelope, FaPhone, FaMapMarker, FaPaperPlane, FaYoutube } from 'react-icons/fa';
+import config from "../config";
+
 
 const Footer = () => {
     const [email, setEmail] = useState('');
@@ -14,7 +16,7 @@ const Footer = () => {
                 setLoading(true);
                 const data = { email: email };
                 try {
-                    const response = await axios.post('/graphql-server', {
+                    const response = await axios.post(`${config.API_URL}/graphql-server`, {
                         query: Subscribe?.loc?.source.body,
                         variables: {emailSubscription: data}
                     });
