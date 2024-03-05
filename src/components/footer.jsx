@@ -14,7 +14,7 @@ const Footer = () => {
                 setLoading(true);
                 const data = { email: email };
                 try {
-                    const response = await axios.post('https://dailygracedevotional.vercel.app/graphql-server', {
+                    const response = await axios.post('/graphql-server', {
                         query: Subscribe?.loc?.source.body,
                         variables: {emailSubscription: data}
                     });

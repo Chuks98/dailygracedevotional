@@ -43,7 +43,7 @@ const UpdateDevotion = () => {
 
   const getPostData = async () => {
     try {
-      const response = await axios.post('https://dailygracedevotional.vercel.app/graphql-server', {
+      const response = await axios.post('/graphql-server', {
         query: `
           query GetPost($postId: ID!) {
             post(id: $postId) {
@@ -116,7 +116,7 @@ const UpdateDevotion = () => {
       try {
         setUpdating(true);
         const data = { postId, topic, text, audioName, imageName, date };
-        const response = await axios.post('http://dailygracedevotional.vercel.app/graphql-server', {
+        const response = await axios.post('/graphql-server', {
           query: print(UPDATE_POST_MUTATION),
           variables: {
             postId: id,
@@ -128,7 +128,7 @@ const UpdateDevotion = () => {
           if (audio !== null) {
             const audioRecord = new FormData();
             audioRecord.append('audio', audio);
-            await axios.post('http://dailygracedevotional.vercel.app/sendAudio', audioRecord).then((sendAudio) => {
+            await axios.post('/sendAudio', audioRecord).then((sendAudio) => {
               console.log(sendAudio.data);
             });
           }
@@ -136,7 +136,7 @@ const UpdateDevotion = () => {
           if (thumbnail !== null) {
             const imageThumbnail = new FormData();
             imageThumbnail.append('thumbnail', thumbnail);
-            await axios.post('http://dailygracedevotional.vercel.app/sendThumbnail', imageThumbnail).then((sendThumbnail) => {
+            await axios.post('/sendThumbnail', imageThumbnail).then((sendThumbnail) => {
               console.log(sendThumbnail.data);
             });
           }
