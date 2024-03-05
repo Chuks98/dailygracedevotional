@@ -50,7 +50,7 @@ const server = new ApolloServer({
 
 async function startApolloServer() {
   await server.start();
-  server.applyMiddleware({ app, path: '/graphql-server' });
+  server.applyMiddleware({ app, path: '/graphql-serve' });
 }
 
 startApolloServer();
@@ -58,7 +58,7 @@ startApolloServer();
 // Handler for Serverless Function
 exports.handler = async (req, res) => {
   try {
-    await server.createHandler({ path: '/graphql-server' })(req, res);
+    await server.createHandler({ path: '/graphql-serve' })(req, res);
   } catch (error) {
     console.error('Error in GraphQL handler:', error);
     res.status(500).json({ error: 'Internal server error' });
