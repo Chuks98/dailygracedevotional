@@ -99,7 +99,7 @@ const CreateDevotion = () => {
           if (audio !== null) {
             const audioRecord = new FormData();
             audioRecord.append('audio', audio);
-            await axios.post('http://localhost:5000/sendAudio', audioRecord).then((sendAudio) => {
+            await axios.post('http://dailygracedevotional.vercel.app/sendAudio', audioRecord).then((sendAudio) => {
               console.log(sendAudio.data);
             });
           }
@@ -107,7 +107,7 @@ const CreateDevotion = () => {
           if (thumbnail !== null) {
             const imageThumbnail = new FormData();
             imageThumbnail.append('thumbnail', thumbnail);
-            await axios.post('http://localhost:5000/sendThumbnail', imageThumbnail).then((sendThumbnail) => {
+            await axios.post('http://dailygracedevotional.vercel.app/sendThumbnail', imageThumbnail).then((sendThumbnail) => {
               console.log(sendThumbnail.data);
             });
           }

@@ -42,21 +42,28 @@ const password = 'Devotion@2024';
   }
 })();
 
-
-
-// Resolvers and Schemas go into this server function
-const server = new ApolloServer({       
+const server = new ApolloServer({
   typeDefs: schema,
   resolvers: resolvers,
   plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
 });
 
 async function startApolloServer() {
-  await server.start(); // Make sure to await the start of the Apollo Server
+  await server.start();
   server.applyMiddleware({ app, path: '/graphql-server' });
 }
 
 startApolloServer();
+
+// Handler for Serverless Function
+exports.handler = async (req, res) => {
+  try {
+    await server.createHandler({ path: '/graphql-server' })(req, res);
+  } catch (error) {
+    console.error('Error in GraphQL handler:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
 
 // const PORT = process.env.PORT || 5000;
 // app.listen(PORT, () => {
