@@ -1,3 +1,3 @@
 module.exports = {
-    API_URL: "https://dailygracedevotionalserver.vercel.app/api/cron"
+    API_URL: "https://104.236.193.57"
 }

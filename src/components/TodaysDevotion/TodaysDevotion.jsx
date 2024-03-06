@@ -25,7 +25,7 @@ const TodaysDevotion = () => {
 
   const getPostData = async () => {
     try {
-      const response = await axios.post(`${API_URL}/graphql-server`, {
+      const response = await axios.post(`${config.API_URL}/graphql-server`, {
         query: `
           query GetPostByDate($date: String!) {
             getPostByDate(date: $date) {
