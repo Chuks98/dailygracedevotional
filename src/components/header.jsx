@@ -95,7 +95,7 @@ function Header() {
           </div>
           {/* <DarkModeButton /> */}
           {!isLoggedIn &&
-            (!loading && <Link onClick={() => setLoading(true)} to={"/login"} style={{lineHeight: '40px', padding: '0px 15px'}} className="md:inline button">
+            (!loading && <Link onClick={() => setLoading(true)} to={"/admin-login"} style={{lineHeight: '40px', padding: '0px 15px'}} className="md:inline button">
               Login
             </Link>)
           }
