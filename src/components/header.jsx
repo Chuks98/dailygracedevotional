@@ -81,7 +81,7 @@ function Header() {
     <header>
       <ToastContainer position="top-right" />
       <div className="grid grid-cols-3 p-10 items-center">
-        <div style={{width: '100px', height: '100px'}}>
+        <div className="logo-container">
           <img style={{width: '100%', height: '100%'}} src="/images/logo.jpeg"/>
         </div>
         <Link style={{width: '100%'}} href="/" prefetch={false}>

@@ -22,10 +22,6 @@
   }
 } */
 
-html {
-  
-}
-
 body {
   background-color: #18181B;
   margin: 0;
@@ -131,6 +127,11 @@ code {
 
 
 /* Header NavLinks */
+.logo-container {
+  width: 100px;
+  height: 100px;
+}
+
 .nav-links {
   display: flex;
   justify-content: center;
@@ -561,10 +562,19 @@ code {
 
 @media only screen and (max-width: 530px) {
   /* For The Header Styling */
+  body {
+    padding: 0px 10px;
+  }
+
   header {
     width: 100%;
-    background-color: orangered;
   }
+
+  .logo-container {
+    width: 70px;
+    height: 70px;
+  }
+
   #main-text {
     font-size: 22px;
   }
